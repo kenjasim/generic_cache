@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-var ItemNotInCache error = fmt.Errorf("item not in cache")
+var ErrItemNotInCache error = fmt.Errorf("item not in cache")
 
 type CacheValue interface {
 	GetExpiryDate() int64
@@ -41,7 +41,7 @@ func (c *GenericCache[C]) Get(key string) (C, error) {
 
 	value, ok := c.CacheMap[key]
 	if !ok {
-		return value, ItemNotInCache
+		return value, ErrItemNotInCache
 	}
 
 	return value, nil

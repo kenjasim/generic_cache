@@ -42,7 +42,7 @@ func TestGetValue(t *testing.T) {
 			name:          "no value in the cache",
 			key:           "foo",
 			value:         nil,
-			expectedError: ItemNotInCache,
+			expectedError: ErrItemNotInCache,
 			cacheDuration: 24 * time.Hour,
 		},
 		{
@@ -52,7 +52,7 @@ func TestGetValue(t *testing.T) {
 				value:  "foo",
 				expiry: time.Now().Add(1 * time.Microsecond),
 			},
-			expectedError: ItemNotInCache,
+			expectedError: ErrItemNotInCache,
 			cacheDuration: 1 * time.Second,
 			expiredTest:   true,
 		},
