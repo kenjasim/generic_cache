@@ -29,7 +29,7 @@ func NewGenericCache[C CacheValue](cacheInterval time.Duration) *GenericCache[C]
 	cache.wg.Add(1)
 	go func() {
 		defer cache.wg.Done()
-		cache.cleanUpLoop(cacheDuration)
+		cache.cleanUpLoop(cacheInterval)
 	}()
 
 	return cache
